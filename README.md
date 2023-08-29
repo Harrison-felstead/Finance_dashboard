@@ -9,3 +9,5 @@ Todo list:
 5. create a dashboard, of graphs and methods of removing certian sets of data. 
 6. be able to analyse the data to determine the approximate amount of tax 
 6.1 be able to modify certian items so they have able to get tax rebates back. 
+7. be able to create a budget and compare it to the actual data.
+9. look at how catagories have changed over time. 
