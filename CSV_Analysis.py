@@ -86,7 +86,23 @@ class ANZ(Parent_Class):
                     #This is the details of the vendor,
                     #The csv has ,,,, at the end of an row so this is used to split
                     #the details from the rest of the row
-                    self.details, _ = row[2].split(",,,,") 
+                    raw_details = row[2]
+                    if raw_details[:9] == "VISA DEBIT":
+                        self.details = raw_details[30:] #This removes VISA DEBIT PURCHASE CARD #### from the details
+                    elif raw_details[:6] == "Payment":
+                        self.details = raw_details[12:]
+                    elif raw_details[:7] == "Transfer":
+                        self.details = raw_details[13:]
+                    elif raw_details[:3] == "BPay":
+                        self.details = raw_details[25:-20] #Unsure this will work
+                    elif raw_details[:18] == "ANZ Banking Payment":
+                        self.details = raw_details[38:]
+                    elif raw_details[:5] == "EFTPOS":
+                        self.details = raw_details[14:]
+                    elif raw_details[:21] == "Account Funds transfer":
+                        self.details = raw_details[33:]
+                    else:
+                        print("Error: The nature of the transaction {} is unknown".format(raw_details))
 
                     #This is the catagory of the transaction
                     self.catagory = self.details.get_catagory()

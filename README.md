@@ -35,13 +35,13 @@ __________________________Project goals_______________________________
 1. Refining "Details" aspect of the data:
 // This is all the types of transactions and will need to be sorted and cleaned prior to entry within the uniform dataset //
 
-1.1: Visa Debit, Remove the first 30 char within the string
-1.2: Payment, Remove the 13 char within the string
-1.3: Transfer, Remove the 14 char within the string
-1.4: BPay, Remove the first 26 char within the string & last 20 char
-1.5: ANZ Banking Payment: Remove the first 39 char within the string
-1.6: EFTPOS, Remove the first 15 char within the string
-1.7: Account Funds transfer, Remove the first 34 Char within the string
+1.1: Visa Debit, Remove the first 30 char within the string                       DONE 
+1.2: Payment, Remove the 13 char within the string                                DONE
+1.3: Transfer, Remove the 14 char within the string                               Done 
+1.4: BPay, Remove the first 26 char within the string & last 20 char              Done 
+1.5: ANZ Banking Payment: Remove the first 39 char within the string              Done 
+1.6: EFTPOS, Remove the first 15 char within the string                           Done
+1.7: Account Funds transfer, Remove the first 34 Char within the string           Done 
 
 
 2. Assigning the catagory for each data entry:
