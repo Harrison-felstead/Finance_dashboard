@@ -32,7 +32,7 @@ __________________________Project Scope__________________________
 
 __________________________Project goals_______________________________
 
-1. Refining "Details" aspect of the data:
+1. Refining "Details" aspect of the data:                                         DONE 
 // This is all the types of transactions and will need to be sorted and cleaned prior to entry within the uniform dataset //
 
 1.1: Visa Debit, Remove the first 30 char within the string                       DONE 
@@ -48,10 +48,10 @@ __________________________Project goals_______________________________
 // This will be an automated process that will assign a catagory and possbily subcatagory to each data entry //
 // By defult the catagory will need to be assigned, and the subcatagory will be "None" //
 
-2.1: Make a def that will iterate through an array (Containing all the catagories) and check if the string contains any of the catagories. If not there call 2.2 def
-2.2: Def that will append the string to a list that will be used to manually assign the catagory and possible subcatagory to the data entry
-2.3: Make an array that will contain the tuple with (account, catagory, subcatagory) and append it to the array. 
-2.3: Make a def that will retrieved the catagory and subcatagory from the array and assign it to the data entry, using the def 2.1. 
+2.1: Make a def that will iterate through an array (Containing all the catagories) and check if the string contains any of the catagories. If not there call 2.2 def                                                                  DONE
+2.2: Def that will append the string to a list that will be used to manually assign the catagory and possible subcatagory to the data entry    DONE
+2.3: Make an array that will contain the tuple with (account, catagory, subcatagory) and append it to the array.           Done (changed data type)
+2.3: Make a def that will retrieved the catagory and subcatagory from the array and assign it to the data entry, using the def 2.1.  DONE
 2.4: It will make an def to be able to change the catagory and subcatagory of the data entry.
 2.5.1: Make a def that will be able to add a new catagory to the array
 2.5.2: Make a def that will be able to add a new subcatagory to the array
