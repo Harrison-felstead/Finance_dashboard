@@ -20,9 +20,13 @@ class catagorise:
         with open('catagories.csv', 'r') as f:
             reader = csv.reader(f)
             self.catagories = list(reader) #This is an array of arrays, each subarray is a line in the csv file
-            self.catagory_list = self.catagories[1] #Cause the whole second row is just the different catagories
-            self.catagories.pop(:1) #Removes the first and second lines of the csv file as it is just the headers
-    
+            self.catagories.pop(0) #Removes the first and second lines of the csv file as it is just the headers
+        with open('catagory_list.csv', 'r') as file:
+            reader = csv.reader(file)
+            self.catagory_list = list(reader) 
+            #This is an array of arrays, the first value in the subarray being the catagory 
+            #reference and the following elements being sub catagories within the catagory
+
     def findCatagory(self, reference):
         for i in range(len(self.catagories)):
             if self.catagories[i][0] == reference:
