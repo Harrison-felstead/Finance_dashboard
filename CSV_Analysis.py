@@ -109,5 +109,18 @@ class ANZ(Parent_Class):
                     #This is the subcatagory of the transaction
                     self.subcatagory = self.details.get_subcatagory()
 
-                    if Master_csvfile.__contains__(self.date, self.transaction_type, self.amount, self.details, self.catagory, self.subcatagory) == True:
+                    lines = csv.reader(Master_csvfile) #This will output an array of lines in the file
+                    try:
+                        for row in lines:  #I will be an array of each row in the file
+                            if row[0] == self.date and row[1] == self.transaction_type and row[2] == self.amount and row[3] == self.details and row[4] == self.catagory and row[5] == self.subcatagory:
+                                #This is when a transaction has already been recorded
+                                KeyError("This transaction has already been recorded")
+                        
+                        #This is when a transaction has not been recorded and has iterated through the whole file checking for duplicates
+                        Master_csvfile.write(self.date, self.transaction_type, self.amount, self.details, self.catagory, self.subcatagory)
+                        
+                    except KeyError:
+                        #This is when a transaction has been recorded
+                        pass
+                    
                         
