@@ -34,21 +34,28 @@ class catagorise:
 
     def findCatagory(self, reference) -> str:
         '''
+        This is called by the main program
         This outputs the catagory of the transaction location string inputed into the function
         '''
 
         for i in range(len(self.catagories)): #Goes through the whole list of catagories
             if self.catagories[i][0] == reference: #If the reference is found in the list of catagories 
                 return self.catagories[i][1] #Returns the catagory reference
+        #ONLY occurs when the reference is not found in the list of catagories, this will need to append the new catagory to the csv file
         value = self.new_catagory(reference) #This calls a function that allows the user to add a new catagory to the csv file
+
         return value
 
     def new_catagory(reference) -> None:
+        '''
+        This is used to add a new transaction location to the csv file
+        '''
+
         os.system("cls") #This clears the screen
         #This is where the user can add a new catagory to the csv file
         for row in range(len(self.catagory_list)):
             print(self.catagory_list[row][0])
-        print("To create a new main catagory, type {}".format(len(self.catagory_list +1)))
+        print("To create a new main catagory, type {}: {}".format(len(self.catagory_list +1), i))
 
         while type(catagory_variable) != int and int <= (len(self.catagory_list)) +1): #Only accepts integers 
             catagory_variable = input("The transaction of {} is unknown, please select which catagory index from above it belongs to".format(reference))
@@ -58,25 +65,53 @@ class catagorise:
         if catagory_variable == len(self.catagory_list +1):
             #This is where the user can add a new catagory to the csv file
             new_catagory = input("Please enter the new catagory")
-            self.catagory_list.append(new_catagory)
-            self.catagories.append(reference, new_catagory, None)
+            Sub_catagory = self.new_subcatagory(reference) #This calls a function that allows the user to add a new subcatagory to the csv file
+
+            temp_value = self.catagory_list.append(new_catagory, Sub_catagory) #This appends the new catagory to the catagory list
+            with open('Catagory_list.csv', 'w') as file:
+                writer = csv.writer(file)
+                writer.writerows(temp_value)
+        
+        else:
+            for i in range(len(self.catagory_list[catagory_variable])):
+                print(self.catagory_list[catagory_variable][i] : i) #This prints all the subcatagories within the catagory
+            print("To create a new subcatagory, type {}".format(len(self.catagory_list[catagory_variable] +1))
+                  
+            while type(subcatagory_variable) != int and int <= (len(self.catagory_list[catagory_variable])) +1): #Only accepts integers 
+                Subcatagory_variable = input("The transaction of {} is unknown, please select which subcatagory index from above it belongs to".format(reference))
+            
+            if Subcatagory_variable == len(self.catagory_list[catagory_variable] +1):
+                Sub_catagory = self.new_subcatagory(reference)
+            else:
+                Sub_catagory = self.catagory_list[catagory_variable][Subcatagory_variable]
+
+            temp_value_1 = self.catagories.append(reference, self.catagory_list[catagory_variable][0], Sub_catagory) 
+            #This appends the new catagory to the catagory list
+            with open('catagories.csv', 'a') as f: 
+                #This appends the whole new transaction type to the csv file
+                writer = csv.writer(f)
+                writer.writerows(temp_value_1)
+
+        
         
     def findSubcatagory(self, reference) -> str:
         '''
+        This is only called by main program
         This outputs the subcatagory of the transaction location string inputed into the function
         '''
-
+        reference_catagory = self.findCatagory(reference) #Finds the catagory reference of the transaction
         for i in range(len(self.catagories)): #Goes through the whole list of catagories
-            if self.catagories[i][0] == reference:
-                return self.catagories[i][2] #Returns the subcatagory reference
-        value = self.new_subcatagory(reference) #This calls a function that allows the user to add a new subcatagory to the csv file
-        return value
+            if  self.catagories[i][0] == reference: #This finds the row which contains the reference
+                return self.catagories[i][2] #Returns the subcatagory of reference transaction
+        
+        return TypeError("The transaction of {} is unknown, please select which subcatagory index from above it belongs to".format(reference))
     
     def new_subcatagory(self, reference) -> None:
+        #This is only called by new_catagory
+
         os.system("cls") #This clears the screen 
-        reference_catagory = self.findCatagory(reference) #Finds the catagory reference of the transaction
         for row in range(len(self.catagory_list)):
-            if self.catagory_list[row][0] == reference_catagory:
+            if self.catagory_list[row][0] == reference:
                 for i in range(len(self.catagory_list[row])):
                     print(self.catagory_list[row][i]) #This prints all the subcatagories within the catagory
                 break #This is to stop the loop from printing the whole list of subcatagories
@@ -84,19 +119,20 @@ class catagorise:
         print("To create a new subcatagory, type {}".format(len(self.catagory_list +1))
               
         while type(subcatagory_variable) != int and int <= (len(self.catagory_list)) +1): #Only accepts integers 
-            `subcatagory_variable = input("The transaction of {} is unknown, please select which subcatagory index from above it belongs to".format(reference))
+            subcatagory_variable = input("The transaction of {} is unknown, please select which subcatagory index from above it belongs to".format(reference))
 
         if subcatagory_variable == len(self.catagory_list +1):
             #This is where the user can add a new subcatagory to the csv file
             new_subcatagory = input("Please enter the new subcatagory")
-            self.catagory_list[catagory_variable].append(new_subcatagory)
-            self.catagories[reference].append(new_subcatagory) #This adds the new subcatagory to the catagory reference
-        else:
-            self.catagories[reference].append(self.catagory_list[row][subcatagory_variable])
-            #This adds the pre-existing subcatagory to the catagory[reference], since the for loop breaks, 
-            #the row variable is still the same as it was when the loop broke 
+            self.catagory_list[row].append(new_subcatagory)  #This appends the new subcatagory to the catagory list
 
-
-    ####Unsure what I would need to do to be able to push any updates to the csv file####
+            with open('Catagory_list.csv', 'w') as file:
+                writer = csv.writer(file)
+                writer.writerows(new_subcatagory)
+            
+            with open('catagories.csv', 'a') as f: 
+                #This appends the whole new transaction type to the csv file
+                writer = csv.writer(f)
+                writer.writerows(reference, self.catagory_list[row][0], new_subcatagory)
         
             
