@@ -32,6 +32,34 @@ class catagorise:
             #This is an array of arrays, the first value in the subarray being the catagory 
             #reference and the following elements being sub catagories within the catagory
 
+    def remove_catagory(self, catagory_removed, catagory_new_name = None) -> None:
+
+        try: 
+            for index in len(range(self.catagories)):
+                #This finds the index where catagory_removed is within the catagory_list
+                if self.all_catagories[i][0] == catagory_removed:
+                    break
+            ValueError
+        except ValueError:
+            #This runs if the catagory removed is not within the catagory list 
+            return ValueError, "The index put into remove catagory isn't within the list"
+
+        if catagory_new_name is not None: 
+            #These lines will occur when there is passing an rename for the removed catagory.
+            
+
+    def all_catagories(self):
+        temp_list = [] #This appends all the first entry values to this list
+        for _ in range(len(self.catagories)): #This means it will iterate through all the possible entries of the list
+            temp_list.append(self.catagories[_][0])
+        return temp_list
+        
+    def all_subcatagories(self):
+        temp_list = [] #This appends all the first entry values to this list
+        for _ in range(len(self.catagories)): #This means it will iterate through all the possible entries of the list
+            temp_list.append(self.catagories[_][1:]) #This will append all values in the row excluding the inital value 
+        return temp_list
+
     def findCatagory(self, reference) -> str:
         '''
         This is called by the main program

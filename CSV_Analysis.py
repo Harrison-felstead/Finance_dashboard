@@ -8,7 +8,7 @@ class Parent_Class:
     def __init__(self, CSV_file):
         self.CSV_file = CSV_file
         #Need to init the  master.csv file here
-        
+    
 
     #The following methods where copied from FIT1008 Week 4 Lecture Notes#
 
